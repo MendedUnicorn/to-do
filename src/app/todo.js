@@ -14,9 +14,7 @@ export class Todo {
 
     }
 
-    addTodo = () => {
-
-    }
+    
     // get title() {
     //     return this._title
     // }

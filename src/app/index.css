@@ -44,7 +44,24 @@ h1 {
     margin: 5px;
     padding: 5px 10px;
 
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
     flex-direction: row;
     justify-content: space-between;
+
+}
+
+.checked {
+    background: grey;
+    text-decoration: line-through;
+}
+
+.high {
+    background:red; 
+}
+.medium {
+    background: yellow;
+}
+.low {
+    background: green
 }

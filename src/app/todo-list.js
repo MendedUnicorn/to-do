@@ -1,10 +1,12 @@
-class TodoList {
+export class TodoList {
     constructor(projectName) {
         this.projectName = projectName
         this.todos  = []
     }
     addTodo = (todo) => {
         this.todos.push(todo)
-        console.log(this.todos)
+    }
+    listTodos = () => {
+         this.todos.forEach(todo => {console.log(todos)})
     }
 }

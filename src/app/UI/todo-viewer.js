@@ -9,10 +9,16 @@ export class TodoViewer {
         const todoList = document.querySelector(".to-do-list")
         const todoElement = document.createElement("div")
         todoElement.classList.add("todo")
+        todoElement.classList.add(todo.priority === "high" ? "high" : todo.priority === "medium" ? "medium" : "low")
         todoElement.append(this.createTitle(todo), this.createDueDate(todo), this.createPrioriy(todo), this.createNotes(todo), this.createChecklist(todo), document.createElement("br") )
         todoList.appendChild(todoElement)
+        todoElement.addEventListener("click", e => {
+            e.target.classList.toggle("checked")
+        })
 
     }
+
+
     static createTitle = (todo) => {
         const todoTitle = document.createElement("p")
         todoTitle.classList = "title"
