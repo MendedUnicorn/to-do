@@ -1,6 +1,7 @@
 //create the input form
 import {Todo} from "../todo.js"
 import {TodoViewer} from "./todo-viewer.js"
+import {todoList} from "../todo-list"
 
 export class TodoInput {
     constructor() {
@@ -11,15 +12,7 @@ export class TodoInput {
     static createNewTodoButton = () => {
         const newTodoButton = document.createElement("button")
         newTodoButton.innerText = "+"
-        newTodoButton.addEventListener("click", (e) => {
-            e.preventDefault()
-            let title = document.querySelector("#title-input").value
-            let dueDate = document.querySelector("#due-date-input").value
-            console.log(dueDate)
-            let priority = document.querySelector("#priority-input").value
-            let todo = new Todo(title, "", dueDate, priority, "", "", "" )
-            TodoViewer.createTodo(todo)
-        })
+        
         return newTodoButton
     }
     
