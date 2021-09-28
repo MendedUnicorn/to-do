@@ -28,13 +28,12 @@ h1 {
     height: 80vh;
     width: 20%;
     background: pink;
+    padding: 10px 0 0 10px ;
 }
 
 .to-do-list {
     height: 80vh;
     width: 60%;
-    
-    border: 1px solid blue
 }
 
 
@@ -45,7 +44,7 @@ h1 {
     padding: 5px 10px;
 
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 4fr 4fr 2fr 1fr 1fr 1fr;
     flex-direction: row;
     justify-content: space-between;
 
@@ -64,4 +63,50 @@ h1 {
 }
 .low {
     background: green
+}
+
+.project-element {
+    margin: 5px;
+    padding: 5px;
+    border-radius: 5px;
+}
+.project-element:hover {
+    background: rgba(87, 87, 156, 0.315);
+}
+
+.active-project {
+    border-left: 3px solid rgba(153, 205, 50, 0.548);
+    color: rgba(153, 205, 50, 1);
+    border-radius: 0 5px 5px 0;
+}
+#input-bar {
+    margin: 5px 5px 5px 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    
+}
+
+#input-bar:focus  input  {
+    
+    
+}
+
+#input-bar > input  {
+    border: none;
+    border-radius: 5px 0 0 5px;
+    border-bottom: 1px solid red;
+    background: rgba(173, 126, 126, 0.342);
+    opacity: 1;
+    transition: 1s opacity;
+    width: 90%;
+}
+#input-bar > input[type=submit]  {
+    width: 10%;
+    border: none;
+    border-radius: 0 5px 5px 0;
+    background: rgba(173, 126, 126, 0.342);
+    height: 2em;
+    margin-right: 5px;
+    
 }

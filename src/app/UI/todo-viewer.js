@@ -1,4 +1,6 @@
 import {format} from "date-fns"
+import { projects } from "../.."
+import { TodoInput } from "./todo-input"
 
 
 export class TodoViewer {
@@ -9,15 +11,23 @@ export class TodoViewer {
         const todoList = document.querySelector(".to-do-list")
         const todoElement = document.createElement("div")
         todoElement.classList.add("todo")
+        todoElement.id = todo.id
         todoElement.classList.add(todo.priority === "high" ? "high" : todo.priority === "medium" ? "medium" : "low")
-        todoElement.append(this.createTitle(todo), this.createDueDate(todo), this.createPrioriy(todo), this.createNotes(todo), this.createChecklist(todo), document.createElement("br") )
-        todoList.appendChild(todoElement)
-        todoElement.addEventListener("click", e => {
-            e.target.classList.toggle("checked")
-        })
+        todoElement.append(this.createTitle(todo), this.createDueDate(todo), this.createPrioriy(todo), this.createNotes(todo), this.createChecklist(todo) )
+        todoList.prepend(todoElement)
+        // todoElement.addEventListener("click", e => {
+        //     e.target.classList.toggle("checked")
+        // })
+        todoElement.appendChild(this.createDeleteBtn())
 
     }
+    static deleteTodo = () => {
 
+    }
+    static clearTodos = () => {
+        const todoList = document.querySelector(".to-do-list")
+        todoList.innerHTML = ""
+    }
 
     static createTitle = (todo) => {
         const todoTitle = document.createElement("p")
@@ -56,6 +66,30 @@ export class TodoViewer {
         }
         return ul;
         
+    }
+    static createDeleteBtn = () => {
+        const deleteBtn = document.createElement("div")
+        deleteBtn.innerText = "X"
+        deleteBtn.addEventListener("click", e => {
+            //console.log(e.target)
+            e.stopPropagation()
+            projects.forEach((project, i) => {
+                project.todos.forEach((todo, j) => {
+                    if(e.target.parentElement.id === todo.id  ) {
+                        projects[i].todos.splice(j, 1)
+                        this.clearTodos()
+                        projects[i].todos.forEach(todo => {
+                            this.createTodo(todo)
+                        })
+                        TodoInput.createInput()
+
+                    }
+                })
+            })
+            window.localStorage.setItem("projects", JSON.stringify(projects))
+            
+        })
+        return deleteBtn
     }
 
 }

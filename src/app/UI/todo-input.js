@@ -2,7 +2,7 @@
 import {Todo} from "../todo.js"
 import {TodoViewer} from "./todo-viewer.js"
 import {todoList} from "../todo-list"
-import {projects} from "../../index"
+import {projects, activeProject} from "../../index"
 
 export class TodoInput {
     constructor() {
@@ -19,9 +19,17 @@ export class TodoInput {
             let dueDate = document.querySelector("#due-date-input").value
             //console.log(dueDate)
             let priority = document.querySelector("#priority-input").value
-            let todo = new Todo(title, "", dueDate, priority, "", "", "" )
+            let todo = new Todo(title, "", dueDate, priority, "", "", "", Date.now().toString() )
             TodoViewer.createTodo(todo)
-            projects[0].addTodo(todo)
+            projects.forEach(project => {
+                console.log("a",project)
+                if (project.projectName === activeProject.activeProject)
+                {
+                    console.log("found it", project)
+                    project.addTodo(todo)
+                }
+            })
+            
             window.localStorage.setItem("projects", JSON.stringify(projects))
         })
         return newTodoButton
@@ -65,7 +73,6 @@ export class TodoInput {
         const todoList = document.querySelector(".to-do-list")
         const form = document.createElement("form")
         form.classList.add("form")
-        console.log("lol");
         form.append(this.createNewTodoButton(), this.createTitleInput(), this.createDueDateInput(), this.createPriorityInput())
         todoList.appendChild(form)
     }

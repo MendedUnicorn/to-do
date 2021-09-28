@@ -1,12 +1,31 @@
-export class ProjectInput {
-    
-    static createInputSubmittButton () {
+import { ProjectViewer } from "./project-viewer"
+import { TodoList } from "../todo-list"
+import { projects } from "../.."
 
-    }
-    static createProjectTitleInput () {
+export class ProjectInput {
+        static createProjectInput () {
         const navBar = document.querySelector(".nav-bar")
+        const inputBar = document.createElement("form")
+        inputBar.id = "input-bar"
         const input = document.createElement("input")
+        const submit = document.createElement("input")
+        submit.setAttribute("type", "submit")
+        submit.id = "btn-new-project"
+        submit.value = "+"
         input.setAttribute("type", "text")
-        navBar.appendChild(input)
+        inputBar.append(input, submit)
+        navBar.appendChild(inputBar)
+        submit.addEventListener("click", e => {
+            e.preventDefault()
+            if (input.value.length > 0) {
+                let newProject  = new TodoList(input.value)
+                projects.push(newProject)
+                ProjectViewer.createProjectElement()
+                window.localStorage.setItem("projects", JSON.stringify(projects))
+            } else {
+                alert("Project Name is needed")
+            }
+            
+        })
     }
 }

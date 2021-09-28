@@ -2,7 +2,7 @@ import {format, isDate} from "date-fns"
 
 
 export class Todo {
-    constructor(title, checked, dueDate, priority, notes, checklist, project) {
+    constructor(title, checked, dueDate, priority, notes, checklist, project, id) {
         this.title = title
         this.checked = checked
         this.dueDate = dueDate
@@ -11,7 +11,7 @@ export class Todo {
         this.checklist = checklist
         this.project = project
         this.checked = false
-
+        this.id = id
     }
 
     
