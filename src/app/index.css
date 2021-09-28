@@ -1,0 +1,50 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+
+}
+
+h1 {
+    border: 1px solid blue;
+    background: burlywood   ;
+    color: rgb(189, 136, 136);
+    margin: 0px;
+    text-align: end;
+    padding-right: 20px;
+}
+.container {
+    display: flex;
+    border: 1px solid black;
+    flex-direction: row;
+    background: lightblue;
+}
+
+.nav-bar {
+    height: 80vh;
+    width: 20%;
+    background: pink;
+}
+
+.to-do-list {
+    height: 80vh;
+    width: 60%;
+    
+    border: 1px solid blue
+}
+
+
+.todo {
+    border-radius: 5px;
+    background: cadetblue;
+    margin: 5px;
+    padding: 5px 10px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
