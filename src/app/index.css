@@ -10,24 +10,24 @@ body {
 }
 
 h1 {
-    border: 1px solid blue;
-    background: burlywood   ;
-    color: rgb(189, 136, 136);
+    background: rgba(52, 52, 150, 0.904);
+    color: rgba(184, 212, 226, 0.836);
     margin: 0px;
     text-align: end;
-    padding-right: 20px;
+    padding: 10px 20px 10px 10px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    text-align: center;
 }
 .container {
     display: flex;
-    border: 1px solid black;
     flex-direction: row;
-    background: lightblue;
+    background: rgba(60, 97, 109, 0.89);
 }
 
 .nav-bar {
     height: 80vh;
     width: 20%;
-    background: pink;
+    background: rgba(69, 97, 116, 0.63);
     padding: 10px 0 0 10px ;
 }
 
@@ -38,8 +38,10 @@ h1 {
 
 
 .todo {
+    margin-top: 20px;
+    
     border-radius: 5px;
-    background: cadetblue;
+    background: rgba(95, 158, 160, 0.527);
     margin: 5px;
     padding: 5px 10px;
 
@@ -47,7 +49,44 @@ h1 {
     grid-template-columns: 4fr 4fr 2fr 1fr 1fr 1fr;
     flex-direction: row;
     justify-content: space-between;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    color:rgb(255, 255, 255)
+}
+.form > button, #title-input, #due-date-input, #priority-input {
+    padding: 5px 0;
+    margin: 5px 0 ;
+    border: none;
+    outline: none;
+    color: rgb(209, 209, 209);
+    box-sizing: content-box;
+    min-height: 1.5em;
+    vertical-align: middle;
+    background: rgba(52, 52, 150, 0.507);
+}
 
+#due-date-input {
+
+}
+.form > button {
+    border-radius:  5px 0 0 5px;
+    width: 30px;
+    margin-left: 5px
+}
+#priority-input {
+    border-radius: 0 5px 5px 0;
+}
+
+
+.delete-btn {
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 3px 0px, rgba(0, 0, 0, 0.16) 0px 1px 2px 0px;
+}
+.delete-btn:hover {
+    box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px 0px inset;
+    cursor: pointer;
 }
 
 .checked {
@@ -56,22 +95,43 @@ h1 {
 }
 
 .high {
-    background:red; 
+    background:rgba(231, 136, 136, 0.575); 
 }
 .medium {
-    background: yellow;
+    background: rgba(247, 247, 145, 0.699);
 }
 .low {
-    background: green
+    background: rgba(156, 255, 156, 0.849)
+}
+.high, .medium, .low {
+    height: 15px;
+    width: 15px;
+    font-size: 4px;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
 }
 
 .project-element {
-    margin: 5px;
+    margin: 5px 10px 5px 5px;
     padding: 5px;
     border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    margin-left: 10px;
+
+
 }
+.project-delete {
+    border-radius: 2px;
+    padding: 1px 3px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+}
+.project-delete:hover {
+    color: red;
+}
+
 .project-element:hover {
     background: rgba(87, 87, 156, 0.315);
+    cursor: pointer;
 }
 
 .active-project {
@@ -86,6 +146,10 @@ h1 {
     justify-content: space-between;
     
 }
+.nav-bar {
+    color: rgb(168, 181, 204);
+    text-shadow: 0.2px 0.2px rgb(243, 190, 92);
+}
 
 #input-bar:focus  input  {
     
@@ -96,7 +160,7 @@ h1 {
     border: none;
     border-radius: 5px 0 0 5px;
     border-bottom: 1px solid red;
-    background: rgba(173, 126, 126, 0.342);
+    background: rgba(52, 52, 150, 0.507);
     opacity: 1;
     transition: 1s opacity;
     width: 90%;
@@ -105,8 +169,19 @@ h1 {
     width: 10%;
     border: none;
     border-radius: 0 5px 5px 0;
-    background: rgba(173, 126, 126, 0.342);
+    background: rgba(52, 52, 150, 0.507);
     height: 2em;
     margin-right: 5px;
     
+}
+
+#todo-details-pane {
+    height: 80vh;
+    width: 20%;
+    background: rgba(75, 75, 145, 0.356);
+    
+}
+
+.visible {
+    visibility: hidden;
 }

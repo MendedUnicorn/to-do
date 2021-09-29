@@ -18,7 +18,7 @@ export class ProjectInput {
         submit.addEventListener("click", e => {
             e.preventDefault()
             if (input.value.length > 0) {
-                let newProject  = new TodoList(input.value)
+                let newProject  = new TodoList(input.value.trim())
                 projects.push(newProject)
                 ProjectViewer.createProjectElement()
                 window.localStorage.setItem("projects", JSON.stringify(projects))

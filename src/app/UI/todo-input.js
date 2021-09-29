@@ -17,9 +17,8 @@ export class TodoInput {
             e.preventDefault()
             let title = document.querySelector("#title-input").value
             let dueDate = document.querySelector("#due-date-input").value
-            //console.log(dueDate)
             let priority = document.querySelector("#priority-input").value
-            let todo = new Todo(title, "", dueDate, priority, "", "", "", Date.now().toString() )
+            let todo = new Todo(title, "", dueDate, priority, "", [], "", Date.now().toString() )
             TodoViewer.createTodo(todo)
             projects.forEach(project => {
                 console.log("a",project)
@@ -39,6 +38,7 @@ export class TodoInput {
         const title = document.createElement("input")
         title.setAttribute("type", "text")
         title.id = "title-input"
+        title.placeholder =  "Add a new todo..."
         return title
     }
     static createDueDateInput = () => {

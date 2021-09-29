@@ -5,6 +5,7 @@ import {TodoViewer} from "./app/UI/todo-viewer.js"
 import {TodoInput} from "./app/UI/todo-input.js"
 import { ProjectViewer } from "./app/UI/project-viewer"
 import { ProjectInput } from "./app/UI/project-input"
+import { TodoDetailsViewer } from "./app/UI/todo-details-viewer"
 
 // const  a = new Todo("get bread", "remember to go to groceries to get bread", new Date(), "medium", "remember to do this for your own sake othewise YOU DEAD!", 
 // [["go to store", false], ["get bread",  false], ["pay for bread", false]])
@@ -43,43 +44,16 @@ if(window.localStorage.getItem("projects") !== null) {
     
 } else {
     projects = [new TodoList("default")]
-    console.log("empty")
 }
 
-
-// export class Storage {
-//     constructor() {
-//         this._activeProject = "default"
-//     }
-//     get activeProject() {
-//         console.log("gave active");
-//         return this._activeProject
-//     }
-//     set activeProject(active) {
-//         console.log("set actrive before",this._activeProject);
-//         this._activeProject = active
-//         console.log("set actrive",this._activeProject);
-//     }
-// }
-// new Storage()
 
 
 
 ProjectViewer.createProjectElement()
+TodoDetailsViewer.createPane(projects[0].todos[0])
 
-let projectElements = document.querySelectorAll(".project-element")
-    console.log(projectElements)
-    projectElements.forEach(project=> {
-        console.log(project.innerText)
-        if(project.innerText  === activeProject.activeProject){
-            project.classList.add("active-project")
-        }
-    })
-
-//Create a default todolist/project
-//let defaultList = new TodoList("default")
-
-//TodoViewer.createTodo()
+//check which project was last active and set to green, if non set  default to green
+ProjectViewer.setActiveProjectColor()
 TodoInput.createInput()
 
 

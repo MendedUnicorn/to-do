@@ -1,5 +1,6 @@
 import {format} from "date-fns"
 import { projects } from "../.."
+import { TodoDetailsViewer } from "./todo-details-viewer"
 import { TodoInput } from "./todo-input"
 
 
@@ -12,12 +13,14 @@ export class TodoViewer {
         const todoElement = document.createElement("div")
         todoElement.classList.add("todo")
         todoElement.id = todo.id
-        todoElement.classList.add(todo.priority === "high" ? "high" : todo.priority === "medium" ? "medium" : "low")
+        //todoElement.classList.add(todo.priority === "high" ? "high" : todo.priority === "medium" ? "medium" : "low")
         todoElement.append(this.createTitle(todo), this.createDueDate(todo), this.createPrioriy(todo), this.createNotes(todo), this.createChecklist(todo) )
         todoList.prepend(todoElement)
-        // todoElement.addEventListener("click", e => {
-        //     e.target.classList.toggle("checked")
-        // })
+        todoElement.addEventListener("click", e => {
+             console.log(e.currentTarget)
+             TodoDetailsViewer.deletePane()
+             TodoDetailsViewer.createPane(todo)
+        })
         todoElement.appendChild(this.createDeleteBtn())
 
     }
@@ -42,9 +45,10 @@ export class TodoViewer {
         return todoDueDate
     }
     static createPrioriy = (todo) => {
-        const todoPriority = document.createElement("p")
+        const todoPriority = document.createElement("div")
         todoPriority.classList = "priority"
-        todoPriority.innerText = todo.priority
+        todoPriority.classList.add(todo.priority === "high" ? "high" : todo.priority === "medium" ? "medium" : "low")
+        //todoPriority.innerText = todo.priority
         return todoPriority
     }
     static createNotes = (todo) => {
@@ -70,6 +74,7 @@ export class TodoViewer {
     static createDeleteBtn = () => {
         const deleteBtn = document.createElement("div")
         deleteBtn.innerText = "X"
+        deleteBtn.classList.add("delete-btn")
         deleteBtn.addEventListener("click", e => {
             //console.log(e.target)
             e.stopPropagation()
