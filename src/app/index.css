@@ -1,6 +1,7 @@
 * {
     box-sizing: border-box;
     margin: 0;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 body {
     display: flex;
@@ -34,6 +35,7 @@ h1 {
 .to-do-list {
     height: 80vh;
     width: 60%;
+    overflow: auto;
 }
 
 
@@ -46,12 +48,72 @@ h1 {
     padding: 5px 10px;
 
     display: grid;
-    grid-template-columns: 4fr 4fr 2fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 20fr 6fr 0fr 1fr 1fr 1fr;
     flex-direction: row;
     justify-content: space-between;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
     color:rgb(255, 255, 255)
 }
+
+.todo:hover {
+    cursor: pointer;
+    background:rgba(0, 0, 0, 0.3);
+    color: white;
+}
+
+.todo.active {
+    background: rgba(78, 76, 76, 0.267); 
+    color: rgba(215, 213, 223, 0.562);
+}
+
+.title {
+    margin-left: 10px;
+}
+
+.checkbox-container input {
+    opacity: 0;
+    height:  0;
+    width: 0;
+}
+.checkbox-container {
+    cursor: pointer;
+    position:  relative;
+}
+.checkmark {
+    position: absolute;
+    top: 0; 
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: rgba(81, 83, 85, 0.26);
+    border-radius: 4px;
+}
+.checkbox-container:hover input ~ .checkmark {
+    background-color: rgba(68, 27, 70, 0.459);
+}
+.checkbox-container input:checked ~ .checkmark {
+    background-color: rgb(15, 75, 62);
+}
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display:none;
+}
+.checkbox-container input:checked ~ .checkmark:after {
+    display:block;
+}
+.checkbox-container .checkmark:after {
+    left: 6px;
+    top: 2px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    transform: rotate(45deg);
+}
+
+
+
 .form > button, #title-input, #due-date-input, #priority-input {
     padding: 5px 0;
     margin: 5px 0 ;
@@ -83,6 +145,7 @@ h1 {
     text-align: center;
     font-family: 'Courier New', Courier, monospace;
     box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 3px 0px, rgba(0, 0, 0, 0.16) 0px 1px 2px 0px;
+    grid-column: 6/7;
 }
 .delete-btn:hover {
     box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px 0px inset;
@@ -108,6 +171,12 @@ h1 {
     width: 15px;
     font-size: 4px;
     box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+    border-radius: 3px;
+}
+.priority {
+    grid-column: 4/5;
+    justify-self: center;
+    align-self: center;
 }
 
 .project-element {
@@ -117,7 +186,7 @@ h1 {
     display: flex;
     justify-content: space-between;
     margin-left: 10px;
-
+    
 
 }
 .project-delete {
@@ -138,6 +207,7 @@ h1 {
     border-left: 3px solid rgba(153, 205, 50, 0.548);
     color: rgba(153, 205, 50, 1);
     border-radius: 0 5px 5px 0;
+    padding-left: 5px;
 }
 #input-bar {
     margin: 5px 5px 5px 5px;
@@ -179,9 +249,94 @@ h1 {
     height: 80vh;
     width: 20%;
     background: rgba(75, 75, 145, 0.356);
+    overflow: auto;
+    padding: 20px
     
 }
 
 .visible {
     visibility: hidden;
 }
+
+#color-and-priority {
+    display:flex;
+}
+
+
+.pane-title, .pane-due-date, .pane-priority, .pane-notes, #checklist-ul, #checklist-form input {
+    background: rgba(95, 158, 160, 0.527);
+    outline: none;
+    border:none;
+    border-radius: 5px;
+    padding: 5px;
+    min-height: 1.2em;
+    vertical-align: middle;
+    margin-bottom: 10px;
+    width: 90%;
+    color: white;
+}
+.pane-priority {
+    -webkit-appearance: menulist-button;
+    color: white;
+    -moz-appearance: menulist-button;
+    border-radius: 0 5px 5px 0;
+    width: 75%;
+}
+
+#checklist-form {
+    display:flex;
+    flex-direction: row;
+}
+#checklist-ul {
+    margin-bottom: 0;
+    border-radius: 5px 5px 0 0 ;
+    /* padding: 0 0 0 50px; */
+    
+}
+#checklist-add-button {
+    background: rgba(95, 158, 160, 0.527);
+    border: none;
+    border-radius: 0 0px 5px 0;
+    /* padding: 5px 10px 5px 5px; */
+    width: 10%;
+    margin-bottom: 10px;
+}
+#checklist-form input {
+    border-radius: 0 0 0 5px;
+    width: 80%;
+}
+
+#color-and-priority div {
+    /* min-height: 1.2em;
+    border: 1px solid red; */
+}
+
+.high-pane {
+    background:rgba(231, 136, 136, 0.575); 
+}
+.medium-pane {
+    background: rgba(247, 247, 145, 0.699);
+}
+.low-pane {
+    background: rgba(156, 255, 156, 0.849)
+}
+.high-pane, .medium-pane, .low-pane {
+    height: auto;
+    width:15%;
+    padding: 5px;
+    margin-bottom: 10px;
+    border-radius: 5px 0 0 5px;
+}
+
+::marker {
+    color:darkblue;
+    
+}
+
+li {
+    list-style-position: inside;
+    list-style-type: "|";
+    padding-inline-start: 3px;
+    
+}
+

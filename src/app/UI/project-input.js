@@ -17,7 +17,8 @@ export class ProjectInput {
         navBar.appendChild(inputBar)
         submit.addEventListener("click", e => {
             e.preventDefault()
-            if (input.value.length > 0) {
+            if (projects.find(project =>  project.projectName === input.value)) {alert("A project with that name already exists")}
+            else if (input.value.length > 0) {
                 let newProject  = new TodoList(input.value.trim())
                 projects.push(newProject)
                 ProjectViewer.createProjectElement()

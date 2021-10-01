@@ -20,6 +20,7 @@ export class TodoInput {
             let priority = document.querySelector("#priority-input").value
             let todo = new Todo(title, "", dueDate, priority, "", [], "", Date.now().toString() )
             TodoViewer.createTodo(todo)
+            document.querySelector("#title-input").value  = ""
             projects.forEach(project => {
                 console.log("a",project)
                 if (project.projectName === activeProject.activeProject)

@@ -10,7 +10,7 @@ export class Todo {
         this.notes = notes
         this.checklist = checklist
         this.project = project
-        this.checked = false
+        
         this.id = id
     }
 
